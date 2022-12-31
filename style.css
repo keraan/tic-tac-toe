@@ -1,0 +1,16 @@
+#board-container {
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 4px;
+    border: 1px solid red;
+}
+
+.card {
+    background-color: grey;
+    text-align: center;
+    line-height: 200px;
+    font-size: 50px;
+}
