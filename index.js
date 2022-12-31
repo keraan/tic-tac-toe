@@ -1,4 +1,3 @@
-
 const idCoordinate = {
     0: {row: 0, column: 0},
     1: {row: 0, column: 1},
@@ -13,7 +12,7 @@ const idCoordinate = {
 
 const Gameboard = (() => {
     const boardContainer = document.querySelector('#board-container')
-    cards = document.querySelectorAll('.card')
+
     let id = 0;
     let board = 
     [
@@ -35,7 +34,7 @@ const Gameboard = (() => {
                 console.log(id)
             })
         })
-        cards = document.querySelectorAll('.card')
+
     }
 
     const clearBoard = () => {
@@ -101,9 +100,14 @@ function getCoord(id) {
     return {row, column}
 }
 
-// cards = document.querySelectorAll('.card')
+const cards = document.querySelectorAll('.card')
 
-
+cards.forEach(card => card.addEventListener('click', (e) => {
+    console.log('whatsup')
+    playerOne.place(e)
+    Gameboard
+    Gameboard.updateBoard()
+}))
 
 
 
