@@ -1,122 +1,160 @@
-const idCoordinate = {
-    0: {row: 0, column: 0},
-    1: {row: 0, column: 1},
-    2: {row: 0, column: 2},
-    3: {row: 1, column: 0},
-    4: {row: 1, column: 1},
-    5: {row: 1, column: 2},
-    6: {row: 2, column: 0},
-    7: {row: 2, column: 1},
-    8: {row: 2, column: 2},
-}
-
 const Gameboard = (() => {
     const boardContainer = document.querySelector('#board-container')
+    const cards = document.querySelectorAll('.card')
 
-    let id = 0;
     let board = 
     [
-    ['', '', ''], // board[0][0]
-    ['x', 'x', ''],
-    ['', '', 'o']
+    '', 'gg', '', // board[0-8]
+    '', '', '',
+    '', '', ''
     ]
 
-    const displayBoard = () => {
-        board.map(array => {
-            array.map(() => {
-                const card = document.createElement('div')
-                card.classList.add('card')
-                card.textContent = board[getCoord(id).row][getCoord(id).column]
-                card.id = id
-                id++
-                boardContainer.appendChild(card)
-                console.log('displayboard')
-                console.log(id)
-            })
-        })
+    const getField = (num) => board[num];
 
+    
+    const displayBoard = () => {
+        let num = 0;
+        board.map(() => {
+            const field = document.querySelector(`.card:nth-child(${num+1})`)
+            field.textContent = board[num]
+            num++
+        })
+    }
+
+    const setField = (num, player) => {
+        const field = document.querySelector(`.card:nth-child(${num+1})`)
+        field.textContent = player.getSign()
+        board[num] = player.getSign()
+        displayBoard()
     }
 
     const clearBoard = () => {
-        boardContainer.innerHTML = ''
-        id = 0
-        console.log('clearing')
+        let num = 0;
+        board.map(() => {
+            const field = document.querySelector(`.card:nth-child(${num+1})`)
+            field.textContent = ''
+            board[num] = ''
+            num++
+            displayBoard()
+        })
     }
 
     const updateBoard = () => {
-        console.log('updating')
         clearBoard()
         displayBoard()
     }
 
-    console.log('existing')
-    //console.log(board[2][2])
-    updateBoard()
+    const startGame = (() => {
+        displayBoard()
+    })()
 
-    return {updateBoard, board}
+
+
+    return {updateBoard, board, setField, getField, cards}
 })()
 
-Gameboard.updateBoard()
+// const counterObj = (() => {
+//     let count = 0
+//     const counter = () => {
+//         count++
+//         return count
+//     }
+
+//     return {counter}
+// })()
 
 
 //player factory
 
 
-const playerFactory = (name, marker) => {
-    const sayName = () => console.log(name)
+const playerFactory = (marker) => {
+
+
+    const listener = (() => {
+        Gameboard.cards.forEach(card => card.addEventListener('click', (e) => {
+            console.log(e.target.id)
+            Gameboard.setField(3, playerOne)
+        }))
+    })()
+
     const place = (e) => {
-        console.log('hello')
-        currentID = e.target.id
-        console.log(Gameboard.board[getCoord(currentID).row][getCoord(currentID).column] = marker)
+
     }
 
-    return {sayName, place}
+    const getSign = () => {
+        return marker
+    }
+
+    return {place, getSign}
 }
 
 // define players 
-const playerOne = playerFactory('kieren', 'x')
+const playerOne = playerFactory('x')
+const playerTwo = playerFactory('o')
 
 
+ Gameboard.setField(4, playerOne)
+
+// console.log(Gameboard.getField(4))
 
 
 // const currentTile = (() => {
-//     const currentID = () => {
-//         const cards = document.querySelectorAll('.card')
-//         cards.forEach(card => card.addEventListener('mouseover', (e) => {
-//             console.log(e.target.id)
-//             return e.target.id
+//     const cards = document.querySelectorAll('.card')
+
+    // const currentID = () => {
+    //         cards.forEach(card => card.addEventListener('mouseover', (e) => {
+    //         console.log(e.target.id)
+    //         return e.target.id
+    //     }))
+    // }
+
+//     const marker = () => {
+//             cards.forEach(card => card.addEventListener('mouseover', (e) => {
+//             console.log(e.target.textContent)
+//             console.log('heya')
+//             return e.target.textContent
 //         }))
 //     }
 
-//     return currentID
+//     return {currentID, marker}
 // })()
 
-// currentTile()
 
 
-function getCoord(id) {
-    row = idCoordinate[id].row
-    column = idCoordinate[id].column
-    return {row, column}
-}
-
-const cards = document.querySelectorAll('.card')
-
-cards.forEach(card => card.addEventListener('click', (e) => {
-    console.log('whatsup')
-    playerOne.place(e)
-    Gameboard
-    Gameboard.updateBoard()
-}))
+// function getCoord(id) {
+//     row = idCoordinate[id].row
+//     column = idCoordinate[id].column
+//     return {row, column}
+// }
 
 
 
-// console.log(idCoordinate[8])
+
+// const runGame = () => {
+//     if ((counterObj.counter() % 2) == 0) {
+//         const cards = document.querySelectorAll('.card')
+
+//         cards.forEach((card) => card.addEventListener('click', (e) => {
+//             console.log('playeerone')
+//             playerOne.place(e)
+//             Gameboard.updateBoard()
+//         }))
+//     } else {
+//         const cards = document.querySelectorAll('.card')
+
+//         cards.forEach((card) => card.addEventListener('click', (e) => {
+//             console.log('PLAYERTWO')
+//             playerTwo.place(e)
+//             Gameboard.updateBoard()
+//         }))
+//     }
+// }
 
 
-
-document.body.addEventListener('click', () => console.log(Gameboard))
-
+// document.body.addEventListener('click', () => {
+//     runGame()
+//     currentTile.marker()
+// })
 
 
 
