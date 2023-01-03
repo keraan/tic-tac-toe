@@ -1,3 +1,7 @@
+html {
+    background-color: #EFEFEF;
+}
+
 #board-container {
     width: 600px;
     height: 600px;
@@ -9,7 +13,7 @@
 
 .card {
     position: relative;
-    background-color: grey;
+    background-color: #A9A9A9;
     text-align: center;
     line-height: 200px;
     font-size: 50px;
@@ -23,12 +27,14 @@
     top: 50%;
     left: 50%;
     width: 300px;
-    padding:10px;
+    padding: 10px;
     border-radius: 10px;
     background-color: grey;
     text-align: center;
     transform: translate(-50%, -50%) scale(0);
     transition: 0.2s ease-in-out;
+    background-color: #FF3B3F;
+    display: flex;
 }
 
 
@@ -48,5 +54,22 @@
 }
 
 #closeBtn {
+    display: block;
+    justify-self: right;
+    width: 40px;
+    background: none;
+    border-radius: 5px;
+    position: absolute;
+    margin-right: 5px;
+    margin-top: 5px;
+    transition: all 0.1s;
+    transform: scale(0)
+}
 
+.result:hover #closeBtn {
+    transform: scale(1);
+}
+
+.message {
+    font-size: 30px;
 }
