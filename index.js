@@ -173,16 +173,6 @@ const gameController = (() => {
                     endGame("Draw");
                 })();  
             }
-            else {
-                // //displayController.deactivate();
-                // (async () => {
-                //     await _sleep(250 + (Math.random() * 300));
-                //     aiStep();
-                //     if (!checkForWin(gameBoard)) {
-                //         displayController.activate();
-                //     }
-                // })();
-            }
         }
         else {
             console.log('Already Filled')
@@ -199,16 +189,7 @@ const gameController = (() => {
         }
     }
 
-    return {
-        getPlayerOne,
-        getPlayerTwo,
-        playerStep,
-        checkForRows,
-        checkForColumns,
-        checkForDiagonals,
-        checkForWin,
-
-    }
+    return {getPlayerOne, getPlayerTwo, playerStep, checkForRows, checkForColumns, checkForDiagonals, checkForWin}
 })()
 
 gameController.checkForColumns(gameBoard.board)
@@ -237,19 +218,6 @@ const displayController = (() => {
             field.addEventListener('click', gameController.playerStep.bind(field, i));
         }
     })()
-
-    // const init = (() => {
-    //     cards.forEach(card => card.addEventListener('click', (e) => {
-    //         console.log(card)
-    //         gameController.playerStep(5)
-    //     }))
-    // })()
-
-        // restart.addEventListener('click', gameController.restart);
-
-        // x.addEventListener('click', _changePlayerSign.bind(this, 'X'));
-
-        // o.addEventListener('click', _changePlayerSign.bind(this, 'O'));
 
     return {cards, result, message, overlay}
 })()
