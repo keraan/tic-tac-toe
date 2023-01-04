@@ -1,75 +1,74 @@
 html {
-    background-color: #EFEFEF;
+  background-color: #efefef;
 }
 
 #board-container {
-    width: 600px;
-    height: 600px;
-    margin: auto;
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    gap: 0px;
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 0px;
 }
 
 .card {
-    position: relative;
-    background-color: #A9A9A9;
-    text-align: center;
-    line-height: 200px;
-    font-size: 50px;
-    height: 200px;
-    width: 200px;
+  position: relative;
+  background-color: #a9a9a9;
+  text-align: center;
+  line-height: 200px;
+  font-size: 50px;
+  height: 200px;
+  width: 200px;
 }
 
 .result {
-    position: fixed;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: grey;
-    text-align: center;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 0.2s ease-in-out;
-    background-color: #FF3B3F;
-    display: flex;
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: grey;
+  text-align: center;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in-out;
+  background-color: #ff3b3f;
+  display: flex;
 }
 
-
 .active {
-    display: grid;
-    transform: translate(-50%, -50%) scale(1);
+  display: grid;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: none;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #closeBtn {
-    display: block;
-    justify-self: right;
-    width: 40px;
-    background: none;
-    border-radius: 5px;
-    position: absolute;
-    margin-right: 5px;
-    margin-top: 5px;
-    transition: all 0.1s;
-    transform: scale(0)
+  display: block;
+  justify-self: right;
+  width: 40px;
+  background: none;
+  border-radius: 5px;
+  position: absolute;
+  margin-right: 5px;
+  margin-top: 5px;
+  transition: all 0.1s;
+  transform: scale(0);
 }
 
 .result:hover #closeBtn {
-    transform: scale(1);
+  transform: scale(1);
 }
 
 .message {
-    font-size: 30px;
+  font-size: 30px;
 }
